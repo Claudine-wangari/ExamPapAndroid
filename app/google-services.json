@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "346958717411",
+    "firebase_url": "https://exampap-8c306.firebaseio.com",
+    "project_id": "exampap-8c306",
+    "storage_bucket": "exampap-8c306.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:346958717411:android:c58ce481139fffa80d40d6",
+        "android_client_info": {
+          "package_name": "com.example.exampap"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "346958717411-nkir5smc4humnn4vs62t23n65n5nme5s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.exampap",
+            "certificate_hash": "89a66df7b34e24024cf6e182d3bd97e9a78e5b34"
+          }
+        },
+        {
+          "client_id": "346958717411-4k46ho58cfgeh7j06vb9r129hqeqiav2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzS9ZZyRbM5ZtrLC4fJmwR8cd5TgQpU8c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "346958717411-4k46ho58cfgeh7j06vb9r129hqeqiav2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
