@@ -9,7 +9,9 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
 
-    <string name="title_activity_splash_screen">SplashScreen</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_splash_screen">myStrath</string>
+    <string name="toolbar_content">Strathmore University</string>
+    <string name="home_page_title">Welcome to myStrath</string>
+    <string name="title_activity_trial_page">TrialPage</string>
+    <!--    <string name="title_activity_home_page">HomePage</string>-->
 </resources>
