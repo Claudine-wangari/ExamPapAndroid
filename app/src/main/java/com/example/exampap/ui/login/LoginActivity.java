@@ -41,6 +41,12 @@ public class LoginActivity extends AppCompatActivity {
         final Button loginButton = findViewById(R.id.login);
         final ProgressBar loadingProgressBar = findViewById(R.id.loading);
 
+        //TODO REmove this 3 when demoing the app after dine
+        usernameEditText.setText("claudine@gmail.com");
+        passwordEditText.setText("password");
+        loginButton.setEnabled(true);
+
+
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
             @Override
             public void onChanged(@Nullable LoginFormState loginFormState) {

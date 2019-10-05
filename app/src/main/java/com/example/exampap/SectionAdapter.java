@@ -52,12 +52,15 @@ public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.MyViewHo
 
 
         // loading album cover using Glide library
-        Glide.with(mContext).load(sectionList).into(holder.thumbnail);
+        //TODO Old implementation
+        //Glide.with(mContext).load(sectionList).into(holder.thumbnail);
+
+        Glide.with(mContext).load(sectionList.get(position).getThumbNail()).into(holder.thumbnail);
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return sectionList.size();
     }
 
 }

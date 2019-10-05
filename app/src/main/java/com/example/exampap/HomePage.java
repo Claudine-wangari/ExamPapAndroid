@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 
@@ -25,19 +26,19 @@ public class HomePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+        prepareSections();
 
 
         recyclerView = findViewById(R.id.recycler_view);
         adapter = new SectionAdapter(this, sectionList);
 
-        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 2);
+        GridLayoutManager mLayoutManager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(10), true));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
 
-        prepareSections();
-
+        Log.e("$$$$", adapter.getItemCount()+"");
     }
 
     private int dpToPx(int dp) {
@@ -77,7 +78,7 @@ public class HomePage extends AppCompatActivity {
         s = new Section("Exams", draws[6]);
         sectionList.add(s);
 
-        adapter.notifyDataSetChanged();
+      //  adapter.notifyDataSetChanged();
 
     }
 

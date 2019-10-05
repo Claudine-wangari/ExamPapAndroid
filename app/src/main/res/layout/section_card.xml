@@ -19,19 +19,21 @@
 
             <ImageView
                 android:id="@+id/thumbnail"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/section_height"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:scaleType="fitXY"
+                android:layout_centerHorizontal="true"
                 android:focusable="true" />
 
             <TextView
                 android:id="@+id/title"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/thumbnail"
                 android:paddingLeft="@dimen/section_title_padding"
+                android:layout_centerHorizontal="true"
                 android:paddingTop="@dimen/section_title_padding"
                 android:paddingRight="@dimen/section_title_padding"
                 android:textColor="@android:color/black"
