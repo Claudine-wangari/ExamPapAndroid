@@ -1,6 +1,7 @@
 package com.example.exampap;
 
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.support.v7.app.AppCompatActivity;
@@ -30,7 +31,17 @@ public class HomePage extends AppCompatActivity {
 
 
         recyclerView = findViewById(R.id.recycler_view);
-        adapter = new SectionAdapter(this, sectionList);
+        adapter = new SectionAdapter(this, sectionList, new OnItemClickListener() {
+            @Override
+            public void onItemClick(Section section) {
+                switch (section.getName()){
+                    case "Exams":{
+                        Intent intent = new Intent(HomePage.this,ExamsActivity.class);
+                        startActivity(intent);
+                    }
+                }
+            }
+        });
 
         GridLayoutManager mLayoutManager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(mLayoutManager);

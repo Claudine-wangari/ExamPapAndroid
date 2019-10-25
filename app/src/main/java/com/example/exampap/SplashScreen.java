@@ -14,8 +14,8 @@ import com.rbddevs.splashy.Splashy;
 public class SplashScreen extends AppCompatActivity {
 
 
-    //TODO return to 5000
-    private static int SPLASH_TIME_OUT = 100;
+
+    private static int SPLASH_TIME_OUT = 600;
 
 
 
@@ -29,11 +29,14 @@ public class SplashScreen extends AppCompatActivity {
 
             @Override
             public void run() {
+
+
                 Intent i = new Intent(SplashScreen.this, LoginActivity.class);
                 startActivity(i);
 
                 // close this activity
                 finish();
+
             }
         },SPLASH_TIME_OUT);
 

@@ -31,7 +31,17 @@
         <!-- Landing Page -->
         <activity
             android:name=".HomePage"
-            android:label="@string/toolbar_content"></activity>
+            android:label="@string/toolbar_content" />
+
+        <!--Exams Page -->
+        <activity
+            android:name=".ExamsActivity"
+            android:label="@string/toolbar_content" />
+
     </application>
+
+    <!-- Internet Permission -->
+
+    <uses-permission android:name="android.permission.INTERNET"/>
 
 </manifest>

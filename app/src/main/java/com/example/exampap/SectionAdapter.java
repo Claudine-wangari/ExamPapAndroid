@@ -18,6 +18,7 @@ public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.MyViewHo
 
     private Context mContext;
     private List<Section> sectionList;
+    private OnItemClickListener onItemClickListener;
 
     class MyViewHolder extends RecyclerView.ViewHolder {
         TextView title;
@@ -29,11 +30,23 @@ public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.MyViewHo
             thumbnail = view.findViewById(R.id.thumbnail);
 
         }
+
+        public void bind(final Section section, final OnItemClickListener onItemClickListener){
+            title.setText(section.getName());
+            Glide.with(mContext).load(section.getThumbNail()).into(thumbnail);
+            thumbnail.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onItemClickListener.onItemClick(section);
+                }
+            });
+        }
     }
 
-    SectionAdapter(Context mContext, List<Section> sectionList) {
+    SectionAdapter(Context mContext, List<Section> sectionList, OnItemClickListener onItemClickListener) {
         this.mContext = mContext;
         this.sectionList = sectionList;
+        this.onItemClickListener = onItemClickListener;
     }
 
     @NotNull
@@ -48,14 +61,7 @@ public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.MyViewHo
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
        Section section= sectionList.get(position);
-        holder.title.setText(section.getName());
-
-
-        // loading album cover using Glide library
-        //TODO Old implementation
-        //Glide.with(mContext).load(sectionList).into(holder.thumbnail);
-
-        Glide.with(mContext).load(sectionList.get(position).getThumbNail()).into(holder.thumbnail);
+       holder.bind(section,onItemClickListener);
     }
 
     @Override
