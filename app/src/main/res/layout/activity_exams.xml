@@ -7,11 +7,12 @@
     android:layout_height="match_parent"
     tools:context=".ExamsActivity">
 
-<android.support.constraint.ConstraintLayout 
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".ExamsActivity"
+    android:orientation="vertical"
     tools:showIn="@layout/activity_exams">
 
     <android.support.design.widget.AppBarLayout
@@ -42,5 +43,5 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"  />
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
 </android.support.design.widget.CoordinatorLayout>

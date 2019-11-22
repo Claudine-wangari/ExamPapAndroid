@@ -15,6 +15,9 @@
     <string name="title_activity_trial_page">TrialPage</string>
 
 
-    <string name="pending_units_fragment">Pending Units</string>
-    <!--    <string name="title_activity_home_page">HomePage</string>-->
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="view_details_button">View Details</string>
+    <string name="holder_unit_name">Unit Name</string>
+    <string name="holder_unit_code">Unit Code</string>
 </resources>

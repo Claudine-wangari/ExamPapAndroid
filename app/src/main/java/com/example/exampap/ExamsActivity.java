@@ -8,7 +8,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,9 +38,10 @@ public class ExamsActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new PendingExamFragment(), "Pending Units");
-//        adapter.addFragment(new TwoFragment(), "TWO");
-//        adapter.addFragment(new ThreeFragment(), "THREE");
+        adapter.addFragment(new FailedUnitsFragment(), "Failed Units");
+        adapter.addFragment(new RepeatsFragment(), "Repeats");
+        adapter.addFragment(new RetakesFragment(), "Retakes");
+        adapter.addFragment(new SpecialsFragment(), "Special Exams");
         viewPager.setAdapter(adapter);
     }
 
