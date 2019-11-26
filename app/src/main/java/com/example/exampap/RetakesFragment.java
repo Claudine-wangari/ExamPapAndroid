@@ -1,13 +1,10 @@
 package com.example.exampap;
 
 import android.app.ProgressDialog;
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -78,7 +75,7 @@ public class RetakesFragment extends Fragment
             {
                 for(UnitItem unitItem : response.body())
                 {
-                    Log.d("UNIT",unitItem.getUnit_name());
+                    Log.d("UNIT",unitItem.getUnit_name() + "");
                 }
                 setUpRecyclerView(response.body());
             }
@@ -94,7 +91,7 @@ public class RetakesFragment extends Fragment
     private void setUpRecyclerView(List<UnitItem> unitItems)
     {
         pDialog.dismiss();
-        recyclerViewUnitList.setAdapter(new UnitItemAdapter(unitItems));
+        recyclerViewUnitList.setAdapter(new UnitItemAdapter(unitItems, getActivity()));
     }
 
 

@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,9 +29,16 @@ public class RepeatsFragment extends Fragment
     private ProgressDialog pDialog;
     private ArrayList<HashMap<Integer, UnitItem>> unitList;
     private RecyclerView recyclerViewUnitList;
+    private Button detailsButton;
+
 
     public RepeatsFragment() { }
 
+    @Override
+    public void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
     public void onPause()
@@ -47,9 +55,19 @@ public class RepeatsFragment extends Fragment
                              Bundle savedInstanceState)
     {
         View unitView = inflater.inflate(R.layout.fragment_failed_units, container, false);
+//        detailsButton = unitView.findViewById(R.id.button);
+//        detailsButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v)
+//            {
+//
+//                Intent intent1 = new Intent(getActivity(),TimetableActivity.class);
+//                startActivity(intent1);
+//
+//            }
+//        });
         return unitView;
-
-    }
+        }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
@@ -72,7 +90,7 @@ public class RepeatsFragment extends Fragment
             {
                 for(UnitItem unitItem : response.body())
                 {
-                    Log.d("UNIT",unitItem.getUnit_name());
+                    Log.d("UNIT",unitItem.getUnit_name()+ "");
                 }
                 setUpRecyclerView(response.body());
             }
@@ -80,7 +98,7 @@ public class RepeatsFragment extends Fragment
             @Override
             public void onFailure(Call<List<UnitItem>> call, Throwable t)
             {
-                Log.d("UNIT FAILURE",t.getMessage());
+                Log.d("UNIT FAILURE",t.getMessage()+"");
             }
         });
 
@@ -90,6 +108,8 @@ public class RepeatsFragment extends Fragment
     private void setUpRecyclerView(List<UnitItem> unitItems)
     {
         pDialog.dismiss();
-        recyclerViewUnitList.setAdapter(new UnitItemAdapter(unitItems));
+        recyclerViewUnitList.setAdapter(new UnitItemAdapter(unitItems, getActivity()));
     }
+
+
 }

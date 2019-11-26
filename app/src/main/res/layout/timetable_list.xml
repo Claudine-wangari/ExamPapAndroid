@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-           >
+            >
 
             <Button
                 android:id="@+id/button"
@@ -32,16 +32,15 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:background="@android:color/transparent"
-                android:text="@string/view_details_button"
-                android:visibility="visible"
+                android:text="@string/apply_now"
                 android:textAllCaps="false"
                 android:textColor="?colorPrimary"
                 android:fontFamily="@font/karla_bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/unit_name" />
+                app:layout_constraintTop_toBottomOf="@+id/venue" />
 
             <TextView
-                android:id="@+id/unit_code"
+                android:id="@+id/group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -49,15 +48,17 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
-                android:hint="@string/holder_unit_code"
+                android:hint="@string/holder_group"
                 android:padding="4dp"
-                app:fontFamily="@font/karla_italic"
-                app:layout_constraintEnd_toEndOf="@+id/unit_name"
-                app:layout_constraintStart_toStartOf="@+id/unit_name"
-                app:layout_constraintTop_toBottomOf="@+id/unit_name" />
+                android:textColor="#000"
+                android:textSize="16sp"
+                app:fontFamily="@font/karla_bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="parent" />
 
             <TextView
-                android:id="@+id/unit_name"
+                android:id="@+id/day"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -66,27 +67,49 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:drawablePadding="4dp"
-                android:hint="@string/holder_unit_name"
+                android:hint="@string/holder_day"
                 android:padding="4dp"
                 android:textColor="#000"
                 android:textSize="16sp"
                 app:fontFamily="@font/karla_bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintEnd_toEndOf="@+id/group"
+                app:layout_constraintStart_toStartOf="@+id/group"
+                app:layout_constraintTop_toTopOf="@+id/group" />
 
-            <ProgressBar
-                android:id="@+id/progressBar"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="0dp"
-                android:visibility="gone"
-                android:max="3"
+            <TextView
+                android:id="@+id/time2"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/unit_code"
-                app:layout_constraintStart_toStartOf="@+id/button"
-                app:layout_constraintTop_toTopOf="@+id/button" />
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:hint="@string/holder_time"
+                android:padding="4dp"
+                app:fontFamily="@font/karla_bold"
+                app:layout_constraintEnd_toEndOf="@+id/day"
+                app:layout_constraintStart_toStartOf="@+id/day"
+                app:layout_constraintTop_toBottomOf="@+id/day" />
 
+            <TextView
+                android:id="@+id/venue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:drawablePadding="4dp"
+                android:hint="@string/holder_venue"
+                android:padding="4dp"
+                android:textColor="#000"
+                android:textSize="16sp"
+                app:fontFamily="@font/karla_italic"
+                app:layout_constraintEnd_toEndOf="@+id/time2"
+                app:layout_constraintStart_toStartOf="@+id/time2"
+                app:layout_constraintTop_toTopOf="@+id/time2" />
 
         </android.support.constraint.ConstraintLayout>
     </android.support.design.card.MaterialCardView>

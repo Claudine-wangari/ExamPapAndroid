@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
@@ -21,6 +22,9 @@ import android.widget.Toast;
 
 import com.example.exampap.HomePage;
 import com.example.exampap.R;
+import com.example.exampap.RetrofitClientInterface;
+import com.example.exampap.UserDataService;
+import com.example.exampap.data.model.LoggedInUser;
 import com.example.exampap.ui.login.LoginViewModel;
 import com.example.exampap.ui.login.LoginViewModelFactory;
 
@@ -32,21 +36,40 @@ public class LoginActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        View backgroundImage = findViewById(R.id.container);
+        Drawable background = backgroundImage.getBackground();
+        background.setAlpha(80);
         loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
 
 
-        final EditText usernameEditText = findViewById(R.id.username);
+        final EditText studentNumberEditText = findViewById(R.id.username);
         final EditText passwordEditText = findViewById(R.id.password);
         final Button loginButton = findViewById(R.id.login);
         final ProgressBar loadingProgressBar = findViewById(R.id.loading);
 
         //TODO Remove this 3 when demoing the app after dine
-        usernameEditText.setText("claudine@gmail.com");
+        studentNumberEditText.setText("094567");
         passwordEditText.setText("password");
         loginButton.setEnabled(true);
 
 
+//        loginButton.setOnClickListener(new View.OnClickListener()
+//        {
+//            @Override
+//            public void onClick(View v)
+//            {
+//                loadingProgressBar.setVisibility(View.VISIBLE);
+//                String studentNumber = studentNumberEditText.getText().toString().trim();
+//                String password = passwordEditText.getText().toString().trim();
+//                LoggedInUser loggedInUser = new LoggedInUser(studentNumber, password);
+//                loginUser(loggedInUser);
+//                Intent intent1= new Intent(LoginActivity.this, HomePage.class);
+//                startActivity(intent1);
+//                loadingProgressBar.setVisibility(View.GONE);
+//
+//            }
+//        });
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
             @Override
             public void onChanged(@Nullable LoginFormState loginFormState) {
@@ -55,14 +78,13 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 loginButton.setEnabled(loginFormState.isDataValid());
                 if (loginFormState.getUsernameError() != null) {
-                    usernameEditText.setError(getString(loginFormState.getUsernameError()));
+                    studentNumberEditText.setError(getString(loginFormState.getUsernameError()));
                 }
                 if (loginFormState.getPasswordError() != null) {
                     passwordEditText.setError(getString(loginFormState.getPasswordError()));
                 }
             }
         });
-
 
         loginViewModel.getLoginResult().observe(this, new Observer<LoginResult>() {
             @Override
@@ -84,48 +106,24 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        TextWatcher afterTextChangedListener = new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                // ignore
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // ignore
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                loginViewModel.loginDataChanged(usernameEditText.getText().toString(),
-                        passwordEditText.getText().toString());
-            }
-        };
-        usernameEditText.addTextChangedListener(afterTextChangedListener);
-        passwordEditText.addTextChangedListener(afterTextChangedListener);
-        passwordEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    loginViewModel.login(usernameEditText.getText().toString(),
-                            passwordEditText.getText().toString());
-                }
-                return false;
-            }
-        });
-
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                loadingProgressBar.setVisibility(View.VISIBLE);
+                loginViewModel.login(studentNumberEditText.getText().toString(),
+                        passwordEditText.getText().toString());
                 Intent intent1= new Intent(LoginActivity.this, HomePage.class);
                 startActivity(intent1);
-//                loadingProgressBar.setVisibility(View.VISIBLE);
-//                loginViewModel.login(usernameEditText.getText().toString(),
-//                        passwordEditText.getText().toString());
             }
 
         });
+    }
+
+    private static void loginUser(LoggedInUser loggedInUser)
+    {
+        UserDataService userDataService = RetrofitClientInterface.getRetrofitInstance().create(UserDataService.class);
+        userDataService.loginUser(loggedInUser);
     }
 
 

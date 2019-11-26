@@ -78,7 +78,7 @@ public class FailedUnitsFragment extends Fragment
             {
                 for(UnitItem unitItem : response.body())
                 {
-                    Log.d("UNIT",unitItem.getUnit_name());
+                    Log.d("UNIT",unitItem.getUnit_name()+ "");
                 }
                 setUpRecyclerView(response.body());
             }
@@ -96,6 +96,6 @@ public class FailedUnitsFragment extends Fragment
     private void setUpRecyclerView(List<UnitItem> unitItems)
     {
         pDialog.dismiss();
-        recyclerViewUnitList.setAdapter(new UnitItemAdapter(unitItems));
+        recyclerViewUnitList.setAdapter(new UnitItemAdapter(unitItems, getActivity()));
     }
 }
