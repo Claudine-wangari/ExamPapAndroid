@@ -49,7 +49,7 @@ public class TimetableItemAdapter extends RecyclerView.Adapter<TimetableItemAdap
 
         public TimetableItemViewHolder(View itemView) {
             super(itemView);
-            tvGroup = itemView.findViewById(R.id.group);
+           tvGroup = itemView.findViewById(R.id.group);
             tvDay = itemView.findViewById(R.id.day);
             tvTime = itemView.findViewById(R.id.time2);
             tvVenue = itemView.findViewById(R.id.venue);
@@ -57,18 +57,17 @@ public class TimetableItemAdapter extends RecyclerView.Adapter<TimetableItemAdap
         }
 
         public void bindItem(TimetableItem timetableItem) {
-            tvGroup.setText(timetableItem.getGroup());
-            tvDay.setText(timetableItem.getDay());
-            tvTime.setText(timetableItem.getTime());
-            tvVenue.setText(timetableItem.getVenue());
+            tvGroup.setText("GROUP:" + timetableItem.getGroup());
+            tvDay.setText("DAY:" + timetableItem.getDay());
+            tvTime.setText("TIME:" +timetableItem.getTime());
+            tvVenue.setText("ROOM:" +timetableItem.getVenue());
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent();
                     intent.setAction(Intent.ACTION_VIEW);
                     intent.addCategory(Intent.CATEGORY_BROWSABLE);
-                    intent.setData(Uri.parse("http://10.9.41.27/applications" +
-                            ""));
+                    intent.setData(Uri.parse("http://10.9.41.27/" + ""));
                     context.startActivity(intent);
                 }
             });

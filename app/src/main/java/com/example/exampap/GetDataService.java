@@ -22,6 +22,6 @@ public interface GetDataService
     public Call<List<UnitItem>> getSpecialUnits();
 
     @GET("details/{unit_code}")
-    public Call<List<TimetableItem>> getDetails(@Path(value= "unit_code" ,encoded=true) String unit_code);
+    public Call<TimetableActivity.TimetableDto> getDetails(@Path(value= "unit_code" ,encoded=true) String unit_code);
 
 }

@@ -8,6 +8,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
+import com.google.gson.Gson;
+import com.google.gson.annotations.SerializedName;
+
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -21,13 +25,14 @@ public class TimetableActivity extends AppCompatActivity {
     private ProgressDialog pDialog;
     private ArrayList<HashMap<Integer, TimetableItem>> detailList;
     private RecyclerView recyclerViewDetails;
+    private List<TimetableItem> items = new ArrayList<>();
+    private TimetableItemAdapter adapter;
 
-
-    public TimetableActivity() {}
+    public TimetableActivity() {
+    }
 
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timetable);
@@ -37,50 +42,46 @@ public class TimetableActivity extends AppCompatActivity {
         pDialog.setCancelable(false);
         pDialog.show();
 
-
-        recyclerViewDetails = findViewById(R.id.recyclerViewDetails);
+        adapter = new TimetableItemAdapter(items, this);
+        recyclerViewDetails = findViewById(R.id.recyclerViewUnitList);
         recyclerViewDetails.setLayoutManager(new LinearLayoutManager(this));
+        recyclerViewDetails.setAdapter(adapter);
 
         GetDataService dataService = RetrofitClientInterface.getRetrofitInstance().create(GetDataService.class);
         String unit_code = getIntent().getStringExtra("Unit Code").trim();
         //TODO this changes for the different classes
-        Call<List<TimetableItem>> call = dataService.getDetails(unit_code);
-        Log.d("Nyenye","At step 1: making call");
-        call.enqueue(new Callback<List<TimetableItem>>() {
+        Call<TimetableDto> call = dataService.getDetails(unit_code);
+        call.enqueue(new Callback<TimetableDto>() {
             @Override
-            public void onResponse(Call<List<TimetableItem>> call, Response<List<TimetableItem>> response)
-            {
-                Log.d("Nyeye", "At step 2 Received response");
-                Log.d("resp", "onResponse: " + response.toString());
-                for(TimetableItem timetableItem : response.body())
-                {
-                    Log.d("Details", timetableItem.getGroup()+ "");
-                }
-                setUpRecyclerView(response.body());
+            public void onResponse(Call<TimetableDto> call, Response<TimetableDto> response) {
+
+                recyclerViewDetails.setAdapter(new TimetableItemAdapter(response.body().items,TimetableActivity.this));
                 pDialog.dismiss();
             }
 
             @Override
-            public void onFailure(Call<List<TimetableItem>> call, Throwable t)
-            {
-                Log.d("Details Failure",t.getMessage());
+            public void onFailure(Call<TimetableDto> call, Throwable t) {
+                Log.d("Details Failure", t.getMessage());
             }
         });
 
     }
 
     @Override
-    public void onPause()
-    {
+    public void onPause() {
 
         super.onPause();
-        if(pDialog != null)
+        if (pDialog != null)
             pDialog.dismiss();
     }
 
-    private void setUpRecyclerView(List<TimetableItem> timetableItems)
-    {
+    private void setUpRecyclerView(List<TimetableItem> timetableItems) {
         pDialog.dismiss();
         recyclerViewDetails.setAdapter(new TimetableItemAdapter(timetableItems, getParent()));
+    }
+
+    public class TimetableDto{
+        @SerializedName("ICS 4105")
+        List<TimetableItem> items = new ArrayList<>();
     }
 }

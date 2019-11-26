@@ -1,9 +1,14 @@
 package com.example.exampap;
 
+import com.google.gson.annotations.SerializedName;
+
 public class TimetableItem {
+    @SerializedName("study_year")
     private String group;
+    @SerializedName(("day_of_the_week"))
     private String day;
     private String time;
+    @SerializedName("unit_name")
     private String venue;
 
     public String getGroup() {

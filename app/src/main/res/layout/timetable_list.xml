@@ -1,118 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+
+<android.support.design.card.MaterialCardView xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp"
+    app:cardUseCompatPadding="true"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <android.support.design.card.MaterialCardView
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="4dp"
-        app:cardUseCompatPadding="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="wrap_content">
 
-        <android.support.constraint.ConstraintLayout
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@android:color/transparent"
+            android:text="@string/apply_now"
+            android:textAllCaps="false"
+            android:textColor="?colorPrimary"
+            android:fontFamily="@font/karla_bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/venue" />
+
+        <TextView
+            android:id="@+id/day"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:hint="@string/holder_day"
+            android:padding="4dp"
+            app:fontFamily="@font/karla_bold"
+            app:layout_constraintEnd_toEndOf="@+id/group"
+            app:layout_constraintStart_toStartOf="@+id/group"
+            app:layout_constraintTop_toBottomOf="@+id/group" />
 
-            <Button
-                android:id="@+id/button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:background="@android:color/transparent"
-                android:text="@string/apply_now"
-                android:textAllCaps="false"
-                android:textColor="?colorPrimary"
-                android:fontFamily="@font/karla_bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/venue" />
+        <TextView
+            android:id="@+id/time2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:hint="@string/holder_time"
+            android:padding="4dp"
+            app:fontFamily="@font/karla_bold"
+            app:layout_constraintEnd_toEndOf="@+id/day"
+            app:layout_constraintStart_toStartOf="@+id/day"
+            app:layout_constraintTop_toBottomOf="@+id/day" />
 
-            <TextView
-                android:id="@+id/group"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:hint="@string/holder_group"
-                android:padding="4dp"
-                android:textColor="#000"
-                android:textSize="16sp"
-                app:fontFamily="@font/karla_bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="parent" />
+        <TextView
+            android:id="@+id/group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:hint="@string/holder_group"
+            android:padding="4dp"
+            app:fontFamily="@font/karla_bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/day"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:drawablePadding="4dp"
-                android:hint="@string/holder_day"
-                android:padding="4dp"
-                android:textColor="#000"
-                android:textSize="16sp"
-                app:fontFamily="@font/karla_bold"
-                app:layout_constraintEnd_toEndOf="@+id/group"
-                app:layout_constraintStart_toStartOf="@+id/group"
-                app:layout_constraintTop_toTopOf="@+id/group" />
-
-            <TextView
-                android:id="@+id/time2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:hint="@string/holder_time"
-                android:padding="4dp"
-                app:fontFamily="@font/karla_bold"
-                app:layout_constraintEnd_toEndOf="@+id/day"
-                app:layout_constraintStart_toStartOf="@+id/day"
-                app:layout_constraintTop_toBottomOf="@+id/day" />
-
-            <TextView
-                android:id="@+id/venue"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:drawablePadding="4dp"
-                android:hint="@string/holder_venue"
-                android:padding="4dp"
-                android:textColor="#000"
-                android:textSize="16sp"
-                app:fontFamily="@font/karla_italic"
-                app:layout_constraintEnd_toEndOf="@+id/time2"
-                app:layout_constraintStart_toStartOf="@+id/time2"
-                app:layout_constraintTop_toTopOf="@+id/time2" />
-
-        </android.support.constraint.ConstraintLayout>
-    </android.support.design.card.MaterialCardView>
-
-
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/venue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:hint="@string/holder_venue"
+            android:padding="4dp"
+            app:fontFamily="@font/karla_bold"
+            app:layout_constraintEnd_toEndOf="@+id/time2"
+            app:layout_constraintStart_toStartOf="@+id/time2"
+            app:layout_constraintTop_toBottomOf="@+id/time2" />
+    </android.support.constraint.ConstraintLayout>
+</android.support.design.card.MaterialCardView>

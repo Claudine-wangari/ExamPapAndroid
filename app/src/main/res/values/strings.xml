@@ -21,10 +21,10 @@
     <string name="holder_unit_name">Unit Name</string>
     <string name="holder_unit_code">Unit Code</string>
     <string name="apply_now">Apply Now</string>
-    <string name="holder_group">holder group</string>
-    <string name="holder_day">holder day</string>
-    <string name="holder_time">holder time</string>
-    <string name="holder_venue">holder venue</string>
+    <string name="holder_group">Group</string>
+    <string name="holder_day">Day</string>
+    <string name="holder_time">Time</string>
+    <string name="holder_venue">Venue</string>
     <string name="app_settings">Settings</string>
     <string name="logout">Logout</string>
     <string name="app_info">Info</string>
